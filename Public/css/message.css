@@ -1,0 +1,54 @@
+@CHARSET "UTF-8";
+
+form{
+	margin: 65px;
+}
+
+.form-group{
+	margin-top: 25px;
+}
+
+.form-control {
+  background: none repeat scroll 0 0 rgba(0, 0, 0, 0);
+  border: medium none ;
+  font-size: 14px;
+  height: 50px;
+  width:80%;
+
+}
+
+.form-group .form-control{
+  background-color: #FFFFFF;
+  background-image: none;
+  border: 1px solid #1ab394;
+  border-radius: 1px;
+  color: inherit;
+  display: block;
+  padding: 6px 12px;
+  transition: border-color 0.15s ease-in-out 0s, box-shadow 0.15s ease-in-out 0s;
+  font-size: 14px;
+}
+.form-group .form-control:focus{
+  border-color: #1ab394 !important;
+}
+
+form .messagesub{
+	width:80%;
+  	background-color: #1ab394;
+    border: 1px solid #1ab394;
+    height: 40px;
+    margin-top: 15px;
+}
+form .messagesub:focus{
+  border-color: #1ab394 !important;
+}
+
+.btn-primary:hover,
+.btn-primary:focus,
+.btn-primary:active,
+.btn-primary.active,
+.open .dropdown-toggle.btn-primary {
+  background-color: #18a689;
+  border-color: #18a689;
+  color: #FFFFFF;
+}

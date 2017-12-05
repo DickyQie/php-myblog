@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<div id="main">
+    <div id="mainContent">
+        <div class="forFlow">
+
+            <div id="post_detail">
+                <!--done-->
+                <div id="topics">
+                    <div class = "post">
+                        <h1 class = "postTitle">
+                            <a id="cb_post_title_url" class="postTitle2" href="http://www.cnblogs.com/zhangqie/p/7725104.html">Java开源－astar：A 星算法</a>
+                        </h1>
+                        <div class="clear"></div>
+                        <div class="postBody">
+                            <div id="cnblogs_post_body"><h2 id="articleHeader0">astar</h2>
+                                <p>A星算法Java实现</p>
+                                <h3 id="articleHeader1">一、适用场景</h3>
+                                <p>在一张地图中，绘制从起点移动到终点的最优路径，地图中会有障碍物，必须绕开障碍物。</p>
+                                <h3 id="articleHeader2">二、算法思路</h3>
+                                <p>1. 回溯法得到路径</p>
+                                <p>(如果有路径)采用“结点与结点的父节点”的关系从最终结点回溯到起点，得到路径。</p>
+                                <p>2. 路径代价的估算：F = G+H</p>
+                                <p>A星算法的代价计算使用了被称作是启发式的代价函数。 先说明一下各符号意义：G表示的是 <strong>从起点到当前结点的实际路径代价</strong> (为啥叫实际？就是已经走过了，边走边将代价计算好了)；H表示 <strong>当前结点到达最终结点的估计代价</strong> (为啥叫估计？就是还没走过，不知道前面有没障碍、路通不通，所以只能用估计)；F表示 <strong>当前结点所在路径从起点到最终点预估的总路径代价</strong> 。</p>
+                                <p>G的计算方式：计算方式有挺多种的，这里我们就用这种吧，假设每个结点代表一个正方形，横竖移动距离：斜移动距离=1：1.4（根号2），我们取个整数10和14吧，也就是说当前结点G值=父节点的G+（10或14）。</p>
+                                <p>H的计算方式：估价计算也有很多种方式，我们这里使用“曼哈顿”法，H=|当前结点x值-最终结点x值|+|当前结点y值-最终结点y值|（"||"表示绝对值）。</p>
+                                <p>如下图（图不是自己做的，从网上借来的，自己画的话~...惨不忍睹！）</p>
+                                <p><img src="http://static.open-open.com/lib/uploadImg/20170711/20170711165020_708.jpg" alt=""></p>
+                                <p>3. 辅助表：Open、Close列表</p>
+                                <p>在A星算法中，需要使用两个辅助表来记录结点。 一个用于 <strong>记录可被访问的结点</strong> ，成为Open表；一个是 <strong>记录已访问过的结点</strong> ，称为Close表。 这两个表决定了算法的结束：条件是最终结点在Close表中(找到路径)或Open表为空(找不到了路径)。</p>
+                                <p>4. 移动结点、相邻结点的处理</p>
+                                <p>上面的理解的话，现在就来移动当前的节点，寻找路径。</p>
+                                <p>每次从Open表中取出F值最小的结点出来（ <strong>这里我们使用优先队列来处理比较好</strong> ），作为当前结点；然后将当前结点的所有邻结点按照 <strong>邻结点规则</strong> 加入到Open表中；最后将当前结点放入Close表中，这里就是每次循环的执行内容。</p>
+                                <p>邻结点规则： (1) 当邻结点不在地图中，不加入Open表； (2) 当邻结点是障碍物，不加入Open表； (3) 当邻结点在Close表中，不加入Open表； (4) 当邻结点不在Open中，加入Open表， <strong>设该邻结点的父节点为当前结点</strong> ； (5) **当邻结点在Open表中，我们需要做个比较:如果邻结点的G值&gt;当前结点的G值+当前结点到这个邻结点的代价，那么修改该邻结点的父节点为当前的结点(因为在Open表中的结点除了起点，都会有父节点)，修改G值=当前结点的G值+当前结点到这个邻结点的代价 **</p>
+                                <p>蓝色框框表示在Close表中，绿色的框框表示在Open表中</p>
+                                <p><img src="http://static.open-open.com/lib/uploadImg/20170711/20170711165020_975.jpg" alt=""></p>
+                                <p>最后回溯得到路径</p>
+                                <p><img src="http://static.open-open.com/lib/uploadImg/20170711/20170711165020_830.jpg" alt=""></p>
+                                <h3 id="articleHeader3">三、代码实现(Java)</h3>
+                                <p>1. 输入</p>
+                                <p>(1) 代表地图二值二维数组(0表示可通路，1表示路障)</p>
+                                <div class="cnblogs_code">
+<pre><span style="color: #0000ff">int</span>[][] maps =<span style="color: #000000"> {
+                { </span>0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0<span style="color: #000000"> },
+                { </span>0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0<span style="color: #000000"> },
+                { </span>0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0<span style="color: #000000"> },
+                { </span>0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0<span style="color: #000000"> },
+                { </span>0, 0, 0, 1, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0<span style="color: #000000"> },
+                { </span>0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0<span style="color: #000000"> },
+                { </span>0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0<span style="color: #000000"> }
+                };</span></pre>
+                                </div>
+                                <p>(2) 按照二维数组的特点，坐标原点在左上角，所以y是高，x是宽，y向下递增，x向右递增，我们将x和y封装成一个类，好传参，重写equals方法比较坐标(x,y)是不是同一个。</p>
+                                <div class="cnblogs_code">
+<pre><span style="color: #0000ff">public</span> <span style="color: #0000ff">class</span><span style="color: #000000"> Coord
+{
+    </span><span style="color: #0000ff">public</span> <span style="color: #0000ff">int</span><span style="color: #000000"> x;
+    </span><span style="color: #0000ff">public</span> <span style="color: #0000ff">int</span><span style="color: #000000"> y;
+
+    </span><span style="color: #0000ff">public</span> Coord(<span style="color: #0000ff">int</span> x, <span style="color: #0000ff">int</span><span style="color: #000000"> y)
+    {
+        </span><span style="color: #0000ff">this</span>.x =<span style="color: #000000"> x;
+        </span><span style="color: #0000ff">this</span>.y =<span style="color: #000000"> y;
+    }
+
+    @Override
+    </span><span style="color: #0000ff">public</span> <span style="color: #0000ff">boolean</span><span style="color: #000000"> equals(Object obj)
+    {
+        </span><span style="color: #0000ff">if</span> (obj == <span style="color: #0000ff">null</span>) <span style="color: #0000ff">return</span> <span style="color: #0000ff">false</span><span style="color: #000000">;
+        </span><span style="color: #0000ff">if</span> (obj <span style="color: #0000ff">instanceof</span><span style="color: #000000"> Coord)
+        {
+            Coord c </span>=<span style="color: #000000"> (Coord) obj;
+            </span><span style="color: #0000ff">return</span> x == c.x &amp;&amp; y ==<span style="color: #000000"> c.y;
+        }
+        </span><span style="color: #0000ff">return</span> <span style="color: #0000ff">false</span><span style="color: #000000">;
+    }
+}</span></pre>
+                                </div>
+                                <p>(3) 封装路径结点类，字段包括：坐标、G值、F值、父结点，实现Comparable接口，方便优先队列排序。</p>
+                                <div class="cnblogs_code">
+<pre><span style="color: #0000ff">public</span> <span style="color: #0000ff">class</span> Node <span style="color: #0000ff">implements</span> Comparable&lt;Node&gt;<span style="color: #000000">
+{
+
+    </span><span style="color: #0000ff">public</span> Coord coord; <span style="color: #008000">//</span><span style="color: #008000"> 坐标</span>
+    <span style="color: #0000ff">public</span> Node parent; <span style="color: #008000">//</span><span style="color: #008000"> 父结点</span>
+    <span style="color: #0000ff">public</span> <span style="color: #0000ff">int</span> G; <span style="color: #008000">//</span><span style="color: #008000"> G：是个准确的值，是起点到当前结点的代价</span>
+    <span style="color: #0000ff">public</span> <span style="color: #0000ff">int</span> H; <span style="color: #008000">//</span><span style="color: #008000"> H：是个估值，当前结点到目的结点的估计代价</span>
+
+    <span style="color: #0000ff">public</span> Node(<span style="color: #0000ff">int</span> x, <span style="color: #0000ff">int</span><span style="color: #000000"> y)
+    {
+        </span><span style="color: #0000ff">this</span>.coord = <span style="color: #0000ff">new</span><span style="color: #000000"> Coord(x, y);
+    }
+
+    </span><span style="color: #0000ff">public</span> Node(Coord coord, Node parent, <span style="color: #0000ff">int</span> g, <span style="color: #0000ff">int</span><span style="color: #000000"> h)
+    {
+        </span><span style="color: #0000ff">this</span>.coord =<span style="color: #000000"> coord;
+        </span><span style="color: #0000ff">this</span>.parent =<span style="color: #000000"> parent;
+        G </span>=<span style="color: #000000"> g;
+        H </span>=<span style="color: #000000"> h;
+    }
+
+    @Override
+    </span><span style="color: #0000ff">public</span> <span style="color: #0000ff">int</span><span style="color: #000000"> compareTo(Node o)
+    {
+        </span><span style="color: #0000ff">if</span> (o == <span style="color: #0000ff">null</span>) <span style="color: #0000ff">return</span> -1<span style="color: #000000">;
+        </span><span style="color: #0000ff">if</span> (G + H &gt; o.G +<span style="color: #000000"> o.H)
+            </span><span style="color: #0000ff">return</span> 1<span style="color: #000000">;
+        </span><span style="color: #0000ff">else</span> <span style="color: #0000ff">if</span> (G + H &lt; o.G + o.H) <span style="color: #0000ff">return</span> -1<span style="color: #000000">;
+        </span><span style="color: #0000ff">return</span> 0<span style="color: #000000">;
+    }
+}</span></pre>
+                                </div>
+                                <p>(4) 最后一个数据结构是A星算法输入的所有数据，封装在一起，传参方便。 :grin:</p>
+                                <div class="cnblogs_code">
+<pre><span style="color: #0000ff">public</span> <span style="color: #0000ff">class</span><span style="color: #000000"> MapInfo
+{
+    </span><span style="color: #0000ff">public</span> <span style="color: #0000ff">int</span>[][] maps; <span style="color: #008000">//</span><span style="color: #008000"> 二维数组的地图</span>
+    <span style="color: #0000ff">public</span> <span style="color: #0000ff">int</span> width; <span style="color: #008000">//</span><span style="color: #008000"> 地图的宽</span>
+    <span style="color: #0000ff">public</span> <span style="color: #0000ff">int</span> hight; <span style="color: #008000">//</span><span style="color: #008000"> 地图的高</span>
+    <span style="color: #0000ff">public</span> Node start; <span style="color: #008000">//</span><span style="color: #008000"> 起始结点</span>
+    <span style="color: #0000ff">public</span> Node end; <span style="color: #008000">//</span><span style="color: #008000"> 最终结点</span>
+
+    <span style="color: #0000ff">public</span> MapInfo(<span style="color: #0000ff">int</span>[][] maps, <span style="color: #0000ff">int</span> width, <span style="color: #0000ff">int</span><span style="color: #000000"> hight, Node start, Node end)
+    {
+        </span><span style="color: #0000ff">this</span>.maps =<span style="color: #000000"> maps;
+        </span><span style="color: #0000ff">this</span>.width =<span style="color: #000000"> width;
+        </span><span style="color: #0000ff">this</span>.hight =<span style="color: #000000"> hight;
+        </span><span style="color: #0000ff">this</span>.start =<span style="color: #000000"> start;
+        </span><span style="color: #0000ff">this</span>.end =<span style="color: #000000"> end;
+    }
+}</span></pre>
+                                </div>
+                                <p>2. 处理</p>
+                                <p>(1) 在算法里需要定义几个常量来确定：二维数组中哪个值表示障碍物、二维数组中绘制路径的代表值、计算G值需要的横纵移动代价和斜移动代价。</p>
+                                <div class="cnblogs_code">
+<pre><span style="color: #0000ff">public</span> <span style="color: #0000ff">final</span> <span style="color: #0000ff">static</span> <span style="color: #0000ff">int</span> BAR = 1; <span style="color: #008000">//</span><span style="color: #008000"> 障碍值</span>
+    <span style="color: #0000ff">public</span> <span style="color: #0000ff">final</span> <span style="color: #0000ff">static</span> <span style="color: #0000ff">int</span> PATH = 2; <span style="color: #008000">//</span><span style="color: #008000"> 路径</span>
+    <span style="color: #0000ff">public</span> <span style="color: #0000ff">final</span> <span style="color: #0000ff">static</span> <span style="color: #0000ff">int</span> DIRECT_VALUE = 10; <span style="color: #008000">//</span><span style="color: #008000"> 横竖移动代价</span>
+    <span style="color: #0000ff">public</span> <span style="color: #0000ff">final</span> <span style="color: #0000ff">static</span> <span style="color: #0000ff">int</span> OBLIQUE_VALUE = 14; <span style="color: #008000">//</span><span style="color: #008000"> 斜移动代价</span></pre>
+                                </div>
+                                <p>(2) 定义两个辅助表：Open表和Close表。Open表的使用是需要取最小值，在这里我们使用Java工具包中的优先队列PriorityQueue，Close只是用来保存结点，没其他特殊用途，就用ArrayList。</p>
+                                <div class="cnblogs_code">
+<pre>Queue&lt;Node&gt; openList = <span style="color: #0000ff">new</span> PriorityQueue&lt;Node&gt;(); <span style="color: #008000">//</span><span style="color: #008000"> 优先队列(升序)</span>
+    List&lt;Node&gt; closeList = <span style="color: #0000ff">new</span> ArrayList&lt;Node&gt;();</pre>
+                                </div>
+                                <p>(3) 定义几个布尔判断方法：最终结点的判断、结点能否加入open表的判断、结点是否在Close表中的判断。</p>
+                                <div class="cnblogs_code">
+<pre><span style="color: #008000">/**</span><span style="color: #008000">
+     * 判断结点是否是最终结点
+     </span><span style="color: #008000">*/</span>
+    <span style="color: #0000ff">private</span> <span style="color: #0000ff">boolean</span><span style="color: #000000"> isEndNode(Coord end,Coord coord)
+    {
+        </span><span style="color: #0000ff">return</span> coord != <span style="color: #0000ff">null</span> &amp;&amp;<span style="color: #000000"> end.equals(coord);
+    }
+
+    </span><span style="color: #008000">/**</span><span style="color: #008000">
+     * 判断结点能否放入Open列表
+     </span><span style="color: #008000">*/</span>
+    <span style="color: #0000ff">private</span> <span style="color: #0000ff">boolean</span> canAddNodeToOpen(MapInfo mapInfo,<span style="color: #0000ff">int</span> x, <span style="color: #0000ff">int</span><span style="color: #000000"> y)
+    {
+        </span><span style="color: #008000">//</span><span style="color: #008000"> 是否在地图中</span>
+        <span style="color: #0000ff">if</span> (x &lt; 0 || x &gt;= mapInfo.width || y &lt; 0 || y &gt;= mapInfo.hight) <span style="color: #0000ff">return</span> <span style="color: #0000ff">false</span><span style="color: #000000">;
+        </span><span style="color: #008000">//</span><span style="color: #008000"> 判断是否是不可通过的结点</span>
+        <span style="color: #0000ff">if</span> (mapInfo.maps[y][x] == BAR) <span style="color: #0000ff">return</span> <span style="color: #0000ff">false</span><span style="color: #000000">;
+        </span><span style="color: #008000">//</span><span style="color: #008000"> 判断结点是否存在close表</span>
+        <span style="color: #0000ff">if</span> (isCoordInClose(x, y)) <span style="color: #0000ff">return</span> <span style="color: #0000ff">false</span><span style="color: #000000">;
+
+        </span><span style="color: #0000ff">return</span> <span style="color: #0000ff">true</span><span style="color: #000000">;
+    }
+
+    </span><span style="color: #008000">/**</span><span style="color: #008000">
+     * 判断坐标是否在close表中
+     </span><span style="color: #008000">*/</span>
+    <span style="color: #0000ff">private</span> <span style="color: #0000ff">boolean</span><span style="color: #000000"> isCoordInClose(Coord coord)
+    {
+        </span><span style="color: #0000ff">return</span> coord!=<span style="color: #0000ff">null</span>&amp;&amp;<span style="color: #000000">isCoordInClose(coord.x, coord.y);
+    }
+
+    </span><span style="color: #008000">/**</span><span style="color: #008000">
+     * 判断坐标是否在close表中
+     </span><span style="color: #008000">*/</span>
+    <span style="color: #0000ff">private</span> <span style="color: #0000ff">boolean</span> isCoordInClose(<span style="color: #0000ff">int</span> x, <span style="color: #0000ff">int</span><span style="color: #000000"> y)
+    {
+        </span><span style="color: #0000ff">if</span> (closeList.isEmpty()) <span style="color: #0000ff">return</span> <span style="color: #0000ff">false</span><span style="color: #000000">;
+        </span><span style="color: #0000ff">for</span><span style="color: #000000"> (Node node : closeList)
+        {
+            </span><span style="color: #0000ff">if</span> (node.coord.x == x &amp;&amp; node.coord.y ==<span style="color: #000000"> y)
+            {
+                </span><span style="color: #0000ff">return</span> <span style="color: #0000ff">true</span><span style="color: #000000">;
+            }
+        }
+        </span><span style="color: #0000ff">return</span> <span style="color: #0000ff">false</span><span style="color: #000000">;
+    }</span></pre>
+                                </div>
+                                <p>(4) 计算H值，“曼哈顿” 法，坐标分别取差值相加</p>
+                                <div class="cnblogs_code">
+<pre><span style="color: #0000ff">private</span> <span style="color: #0000ff">int</span><span style="color: #000000"> calcH(Coord end,Coord coord)
+{
+    </span><span style="color: #0000ff">return</span> Math.abs(end.x - coord.x) + Math.abs(end.y -<span style="color: #000000"> coord.y);
+}</span></pre>
+                                </div>
+                                <p>(5) 从Open列表中查找结点</p>
+                                <div class="cnblogs_code">
+<pre><span style="color: #0000ff">private</span><span style="color: #000000"> Node findNodeInOpen(Coord coord)
+{
+    </span><span style="color: #0000ff">if</span> (coord == <span style="color: #0000ff">null</span> || openList.isEmpty()) <span style="color: #0000ff">return</span> <span style="color: #0000ff">null</span><span style="color: #000000">;
+    </span><span style="color: #0000ff">for</span><span style="color: #000000"> (Node node : openList)
+    {
+        </span><span style="color: #0000ff">if</span><span style="color: #000000"> (node.coord.equals(coord))
+        {
+            </span><span style="color: #0000ff">return</span><span style="color: #000000"> node;
+        }
+    }
+    </span><span style="color: #0000ff">return</span> <span style="color: #0000ff">null</span><span style="color: #000000">;
+}</span></pre>
+                                </div>
+                                <p>(6) 添加邻结点到Open表</p>
+                                <div class="cnblogs_code">
+<pre><span style="color: #008000">/**</span><span style="color: #008000">
+ * 添加所有邻结点到open表
+ </span><span style="color: #008000">*/</span>
+<span style="color: #0000ff">private</span> <span style="color: #0000ff">void</span><span style="color: #000000"> addNeighborNodeInOpen(MapInfo mapInfo,Node current)
+{
+    </span><span style="color: #0000ff">int</span> x =<span style="color: #000000"> current.coord.x;
+    </span><span style="color: #0000ff">int</span> y =<span style="color: #000000"> current.coord.y;
+    </span><span style="color: #008000">//</span><span style="color: #008000"> 左</span>
+    addNeighborNodeInOpen(mapInfo,current, x - 1<span style="color: #000000">, y, DIRECT_VALUE);
+    </span><span style="color: #008000">//</span><span style="color: #008000"> 上</span>
+    addNeighborNodeInOpen(mapInfo,current, x, y - 1<span style="color: #000000">, DIRECT_VALUE);
+    </span><span style="color: #008000">//</span><span style="color: #008000"> 右</span>
+    addNeighborNodeInOpen(mapInfo,current, x + 1<span style="color: #000000">, y, DIRECT_VALUE);
+    </span><span style="color: #008000">//</span><span style="color: #008000"> 下</span>
+    addNeighborNodeInOpen(mapInfo,current, x, y + 1<span style="color: #000000">, DIRECT_VALUE);
+    </span><span style="color: #008000">//</span><span style="color: #008000"> 左上</span>
+    addNeighborNodeInOpen(mapInfo,current, x - 1, y - 1<span style="color: #000000">, OBLIQUE_VALUE);
+    </span><span style="color: #008000">//</span><span style="color: #008000"> 右上</span>
+    addNeighborNodeInOpen(mapInfo,current, x + 1, y - 1<span style="color: #000000">, OBLIQUE_VALUE);
+    </span><span style="color: #008000">//</span><span style="color: #008000"> 右下</span>
+    addNeighborNodeInOpen(mapInfo,current, x + 1, y + 1<span style="color: #000000">, OBLIQUE_VALUE);
+    </span><span style="color: #008000">//</span><span style="color: #008000"> 左下</span>
+    addNeighborNodeInOpen(mapInfo,current, x - 1, y + 1<span style="color: #000000">, OBLIQUE_VALUE);
+}
+
+</span><span style="color: #008000">/**</span><span style="color: #008000">
+ * 添加一个邻结点到open表
+ </span><span style="color: #008000">*/</span>
+<span style="color: #0000ff">private</span> <span style="color: #0000ff">void</span> addNeighborNodeInOpen(MapInfo mapInfo,Node current, <span style="color: #0000ff">int</span> x, <span style="color: #0000ff">int</span> y, <span style="color: #0000ff">int</span><span style="color: #000000"> value)
+{
+    </span><span style="color: #0000ff">if</span><span style="color: #000000"> (canAddNodeToOpen(mapInfo,x, y))
+    {
+        Node end</span>=<span style="color: #000000">mapInfo.end;
+        Coord coord </span>= <span style="color: #0000ff">new</span><span style="color: #000000"> Coord(x, y);
+        </span><span style="color: #0000ff">int</span> G = current.G + value; <span style="color: #008000">//</span><span style="color: #008000"> 计算邻结点的G值</span>
+        Node child =<span style="color: #000000"> findNodeInOpen(coord);
+        </span><span style="color: #0000ff">if</span> (child == <span style="color: #0000ff">null</span><span style="color: #000000">)
+        {
+            </span><span style="color: #0000ff">int</span> H=calcH(end.coord,coord); <span style="color: #008000">//</span><span style="color: #008000"> 计算H值</span>
+            <span style="color: #0000ff">if</span><span style="color: #000000">(isEndNode(end.coord,coord))
+            {
+                child</span>=<span style="color: #000000">end;
+                child.parent</span>=<span style="color: #000000">current;
+                child.G</span>=<span style="color: #000000">G;
+                child.H</span>=<span style="color: #000000">H;
+            }
+            </span><span style="color: #0000ff">else</span><span style="color: #000000">
+            {
+                child </span>= <span style="color: #0000ff">new</span><span style="color: #000000"> Node(coord, current, G, H);
+            }
+            openList.add(child);
+        }
+        </span><span style="color: #0000ff">else</span> <span style="color: #0000ff">if</span> (child.G &gt;<span style="color: #000000"> G)
+        {
+            child.G </span>=<span style="color: #000000"> G;
+            child.parent </span>=<span style="color: #000000"> current;
+            </span><span style="color: #008000">//</span><span style="color: #008000"> 重新调整堆</span>
+<span style="color: #000000">            openList.add(child);
+        }
+    }
+}</span></pre>
+                                </div>
+                                <p>(7) 回溯法绘制路径</p>
+                                <div class="cnblogs_code">
+<pre><span style="color: #0000ff">private</span> <span style="color: #0000ff">void</span> drawPath(<span style="color: #0000ff">int</span><span style="color: #000000">[][] maps, Node end)
+{
+    </span><span style="color: #0000ff">if</span>(end==<span style="color: #0000ff">null</span>||maps==<span style="color: #0000ff">null</span>) <span style="color: #0000ff">return</span><span style="color: #000000">;
+    System.out.println(</span>"总代价：" +<span style="color: #000000"> end.G);
+    </span><span style="color: #0000ff">while</span> (end != <span style="color: #0000ff">null</span><span style="color: #000000">)
+    {
+        Coord c </span>=<span style="color: #000000"> end.coord;
+        maps[c.y][c.x] </span>=<span style="color: #000000"> PATH;
+        end </span>=<span style="color: #000000"> end.parent;
+    }
+}</span></pre>
+                                </div>
+                                <p>(8) 开始算法，循环移动结点寻找路径，设定循环结束条件，Open表为空或者最终结点在Close表</p>
+                                <div class="cnblogs_code">
+<pre><span style="color: #0000ff">public</span> <span style="color: #0000ff">void</span><span style="color: #000000"> start(MapInfo mapInfo)
+{
+    </span><span style="color: #0000ff">if</span>(mapInfo==<span style="color: #0000ff">null</span>) <span style="color: #0000ff">return</span><span style="color: #000000">;
+    </span><span style="color: #008000">//</span><span style="color: #008000"> clean</span>
+<span style="color: #000000">    openList.clear();
+    closeList.clear();
+    </span><span style="color: #008000">//</span><span style="color: #008000"> 开始搜索</span>
+<span style="color: #000000">    openList.add(mapInfo.start);
+    moveNodes(mapInfo);
+}
+
+</span><span style="color: #008000">/**</span><span style="color: #008000">
+ * 移动当前结点
+ </span><span style="color: #008000">*/</span>
+<span style="color: #0000ff">private</span> <span style="color: #0000ff">void</span><span style="color: #000000"> moveNodes(MapInfo mapInfo)
+{
+    </span><span style="color: #0000ff">while</span> (!<span style="color: #000000">openList.isEmpty())
+    {
+        </span><span style="color: #0000ff">if</span><span style="color: #000000"> (isCoordInClose(mapInfo.end.coord))
+        {
+            drawPath(mapInfo.maps, mapInfo.end);
+            </span><span style="color: #0000ff">break</span><span style="color: #000000">;
+        }
+        Node current </span>=<span style="color: #000000"> openList.poll();
+        closeList.add(current);
+        addNeighborNodeInOpen(mapInfo,current);
+    }
+}</span></pre>
+                                </div>
+                                <p>&nbsp;</p></div><div id="MySignature"></div>
+                            <div class="clear"></div>
+                            <div id="blog_post_info_block">
+                                <div id="BlogPostCategory"></div>
+                                <div id="EntryTag"></div>
+                                <div id="blog_post_info">
+                                </div>
+                                <div class="clear"></div>
+                                <div id="post_next_prev"></div>
+                            </div>
+
+
+                        </div>
+
+                    </div>
+                </div>
+                <!--end: topics 文章、评论容器-->
+
+
+        </div><!--end: forFlow -->
+    </div><!--end: mainContent 主体内容容器-->
+</body>
+</html>

@@ -24,7 +24,7 @@ nav { background: #31c478; height: 48px; line-height: 48px; padding-left: 80px; 
 }/* 兼容IE6 透明 */
 nav a { display: inline-block; font-size: 18px; font-family: "Microsoft Yahei", Arial, Helvetica, sans-serif; color: #FFF; padding: 0 20px; -webkit-transition: all 1s; -moz-transition: all 1s; -o-transition: all 1s; transition: all 1s; }
 nav a:hover { background: #e41635; }
-#topnav_current { background: #e41635 }/* 高亮选中颜色 */
+/*#topnav_current { background: #e41635 }*//* 高亮选中颜色 */
 /*article { width: 73%; float: left; background: url(../images/ibodybg.png) 560px -147px no-repeat; }*//* 左侧栏 *//*
 aside { width: 27%; background: url(../images/ibodybg.png) -170px -147px no-repeat #000; float: right; }*//* 右侧栏 */
 
@@ -32,6 +32,8 @@ article { width: 73%; float: left; }/* 左侧栏 */
 aside { width: 27%; float: right; background: #31c478;}/* 右侧栏 */
 
 /* 版权信息 */
-.copyright { background: #0d0d0d; border-radius: 50%; text-align: center; color: #d8d8d8; padding: 20px; margin: 60px 20px 0 20px; border: #1b1a1a 1px solid; }
+.copyright { background: #0d0d0d; border-radius: 50%; text-align: center; color: #d8d8d8; padding: 20px; margin: 60px 20px 150px 15px; border: #1b1a1a 1px solid; }
 .copyright p { line-height: 26px; text-shadow: #000 1px 1px 1px }
 .copyright p a { color: #d8d8d8; }
+
+
