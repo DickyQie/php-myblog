@@ -1,0 +1,78 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>给我留言</title>
+<meta name="keywords" content="个人博客模板,博客模板,响应式" />
+<meta name="description" content="如影随形主题的个人博客模板，神秘、俏皮。" />
+<link rel="stylesheet" href="__PUBLIC__/css/bootstrap.min.css" />
+<script type="text/javascript" src="__PUBLIC__/js/bootstrap.min.js" ></script>
+<link href="__PUBLIC__/css/base.css" rel="stylesheet">
+<link href="__PUBLIC__/css/style.css" rel="stylesheet">
+<link href="__PUBLIC__/css/media.css" rel="stylesheet">
+<link rel="stylesheet" href="__PUBLIC__/css/message.css"/>
+<meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0">
+<!--[if lt IE 9]>
+<script src="js/modernizr.js"></script>
+<![endif]-->
+</head>
+<body>
+<div class="ibody">
+ <header>
+  <h1>切切歆语</h1>
+  <h2>人生逍遥乐对, 红尘千般滋味, 做人好比游泳, 游累了也是不能停的......</h2>
+    <div class="logo"><a href="/"></a></div>
+      <nav id="topnav"><a href="<{:U(Index/index)}>">首页</a><a href="<{:U(Resume/resume)}>">个人简历</a><a href="">生活语录</a><a href="about.html">关于我的</a><a href="{:U('message')}">给我留言</a></nav>
+  </header>
+  <article>
+    <h2 class="about_h">您现在的位置是：<a href="/">首页</a>><a href="1/">留言板</a></h2>
+    
+  	<form id="form" name="form" method="post" action="<{:U('checkLogin')}>"  autocomplete="off">
+         <div class="form-group">
+             <input name="username" type="text"  class="form-control" placeholder="Name"  autocomplete="off">
+         </div>
+         <div class="form-group">
+             <input name="password" type="text" class="form-control" placeholder="Email" autocomplete="off">
+         </div>
+          <div class="form-group">
+             <textarea class="form-control" rows="6" placeholder="Your Message" id="user_message"></textarea>
+         </div>
+         <button type="submit" class="btn btn-primary messagesub">畅言一下</button>
+    </form>
+     
+  </article>
+  <aside>
+    <div class="rnav">
+      <li class="rnav1 "><a href="/">个人博客模板</a></li>
+      <li class="rnav2 "><a href="/">企业网站模板</a></li>
+      <li class="rnav3 "><a href="/">个人作品</a></li>
+      <li class="rnav4 "><a href="/">国外html5模板</a></li>
+    </div>
+    <div class="ph_news">
+      <h2>
+        <p>点击排行</p>
+      </h2>
+      <ul class="ph_n">
+        <li><span class="num1">1</span><a href="/">有一种思念，是淡淡的幸福,一个心情一行文字</a></li>
+        <li><span class="num2">2</span><a href="/">励志人生-要做一个潇洒的女人</a></li>
+        <li><span class="num3">3</span><a href="/">女孩都有浪漫的小情怀――浪漫的求婚词</a></li>
+        <li><span>4</span><a href="/">Green绿色小清新的夏天-个人博客模板</a></li>
+        <li><span>5</span><a href="/">女生清新个人博客网站模板</a></li>
+        <li><span>6</span><a href="/">Wedding-婚礼主题、情人节网站模板</a></li>
+        <li><span>7</span><a href="/">Column 三栏布局 个人网站模板</a></li>
+        <li><span>8</span><a href="/">时间煮雨-个人网站模板</a></li>
+        <li><span>9</span><a href="/">花气袭人是酒香―个人网站模板</a></li>
+      </ul>
+    </div>
+     <div class="copyright" style="margin-bottom:130px;">
+      <ul>
+      	<p>Copyright @ 2016 ZhangQie. <a href="#">&nbsp;All Rights Reserved</a></p>
+      </ul>
+    </div>
+  </aside>
+  <script src="js/silder.js"></script>
+  <div class="clear"></div>
+  <!-- 清除浮动 --> 
+</div>
+</body>
+</html>
