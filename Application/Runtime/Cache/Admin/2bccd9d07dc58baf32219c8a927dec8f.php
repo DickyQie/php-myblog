@@ -88,7 +88,7 @@
                     <li><a href="<?php echo U('Datalist/lists');?>">博客列表</a></li>
                     <li><a href="<?php echo U('MiddleLevel/lists');?>">个人简历</a></li>
                     <li><a href="<?php echo U('ElementaryLevel/lists');?>">生活语录</a></li>
-                    <li><a href="<?php echo U('Hot/lists');?>">留言列表</a></li>
+                    <li><a href="<?php echo U('Message/message');?>">留言列表</a></li>
                 </ul>
             </li>
         </ul>
@@ -179,7 +179,7 @@
                                                     <label for="check_<?php echo ($vo["entity_id"]); ?>"></label>
                                                 </td>
                                                 <td> <?php echo ($vo["id"]); ?></td>
-                                                <td> <?php echo ($vo["title"]); ?></td>
+                                                <td> <a href="<?php echo U('Home/Index/blogcontent',array('id'=>$vo['id']));?>"><?php echo ($vo["title"]); ?></a></td>
                                                 <td> <?php echo (get_parent_names($vo['typeid'])); ?> </td>
                                                 <td> <?php echo ($vo["volume"]); ?> </td>
                                                

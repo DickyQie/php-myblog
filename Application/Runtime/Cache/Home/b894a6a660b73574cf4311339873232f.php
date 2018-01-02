@@ -15,6 +15,11 @@
 
 
 
+<script src="/php/zhangqie/Public/js/jquery-2.1.1.min.js"></script>
+<!--Layer-->
+<script src="/php/zhangqie/Public/static/layer/layer.js"></script>
+
+
 <!--sdf  -->
 
 <link href="/php/zhangqie/Public/css/index.css" rel="stylesheet">
@@ -59,16 +64,16 @@
  
   <article>
     <h2 class="about_h">您现在的位置是：<a href="/">首页</a>><a href="1/">留言板</a></h2>
-    
-  	<form id="form" name="form" method="post" action="<?php echo U('checkLogin');?>"  autocomplete="off">
+  
+  	<form id="form" name="form" method="post" action="<?php echo U('addmsg');?>" enctype="multipart/form-data">
          <div class="form-group">
-             <input name="username" type="text"  class="form-control" placeholder="Name"  autocomplete="off">
+             <input name="name" id="name" type="text"  class="form-control" placeholder="Name"  autocomplete="off">
          </div>
          <div class="form-group">
-             <input name="password" type="text" class="form-control" placeholder="Email" autocomplete="off">
+             <input name="email" id="email" type="email" class="form-control" placeholder="Email" autocomplete="off">
          </div>
           <div class="form-group">
-             <textarea class="form-control" rows="6" placeholder="Your Message" id="user_message"></textarea>
+             <textarea class="form-control" name="content" rows="6" placeholder="Your Message" id="content"></textarea>
          </div>
          <button type="submit" class="btn btn-primary messagesub">畅言一下</button>
     </form>
@@ -107,6 +112,27 @@
 <div class="clear"></div>
 	  <!-- 清除浮动 --> 
 </div>
+
+<script>
+	$('form').submit(function(){
+		var name = $("#name").val();
+		var email = $("#email").val();
+		var content = $("#content").val();
+		if(name == ''){
+			layer.msg('请输入名称',{time:1000});
+			return false;
+		}
+		if(email == ''){
+			layer.msg("请输入邮箱",{time:1000});
+			return false;
+		}
+		if(content == ''){
+			layer.msg("请输入留言内容",{time:1000});
+			return false;
+		}
+	});
+</script> 
+
 
 </div>
 </body>

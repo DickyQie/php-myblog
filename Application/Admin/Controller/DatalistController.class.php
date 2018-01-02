@@ -5,10 +5,17 @@ namespace Admin\Controller;
 use Think\Controller;
 use Think\Page;
 
-
+/****
+ * 博客列表
+ * @author zhangqie
+ *
+ */
 class DatalistController extends BaseController{
 	
 	
+	/***
+	 * 博客列表查询和显示
+	 */
 	function lists(){
 		$keyword=I('keyword','','trim');
 		if ($keyword){
@@ -33,7 +40,9 @@ class DatalistController extends BaseController{
 	}
 	
 	
-	
+	/***
+	 * 添加博客
+	 */
 	function add(){
 		if (IS_POST){
 			$post=I("post.");
@@ -54,7 +63,9 @@ class DatalistController extends BaseController{
 		}
 	}
 	
-	
+	/***
+	 * 删除博客
+	 */
 	function delete(){
 		$id=I("id");
 		$res=M("datalist")->where('id='.$id)->delete();
@@ -66,7 +77,9 @@ class DatalistController extends BaseController{
 		
 	}
 	
-	
+	/****
+	 * 多条删除博客
+	 */
 	function delAll(){
 		$ids=I("ids","0");
 		$map['id']=array('in',$ids);
@@ -79,6 +92,35 @@ class DatalistController extends BaseController{
 		
 	}
 	
+	/****
+	 * 修改博客
+	 */
+	function edit(){
+		if (IS_POST){
+			$post=I('post.');
+			$post['content']=html_entity_decode($post['content']);
+			
+			$res=M("datalist")->save($post);
+			if ($res){
+				$this->success("修改成功",U("lists"));
+			}else {
+				$this->error("修改失败");
+			}
+		}else {
+			$id=I('id');
+			$type=M("type")->select();
+			$data=M("datalist")->where("id=".$id)->find();
+			$data['content']=html_entity_decode($data['content']);
+			$this->assign('type',$type);
+			$this->assign('data',$data);
+			$this->display();
+		}
+	}
+	
+	
+	function home() {
+		//U('Home\Index\blogcontent',array('id'=>1));
+	}
 	
 	
 }

@@ -88,7 +88,7 @@
                     <li><a href="<?php echo U('Datalist/lists');?>">博客列表</a></li>
                     <li><a href="<?php echo U('MiddleLevel/lists');?>">个人简历</a></li>
                     <li><a href="<?php echo U('ElementaryLevel/lists');?>">生活语录</a></li>
-                    <li><a href="<?php echo U('Hot/lists');?>">留言列表</a></li>
+                    <li><a href="<?php echo U('Message/message');?>">留言列表</a></li>
                 </ul>
             </li>
         </ul>
@@ -100,7 +100,17 @@
 
 
 	
-    <div id="page-wrapper" class="gray-bg dashbard-1">
+<style type="text/css">
+
+	/**超出长度省略号*/
+	#tdcontent{
+	max-width: 210px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+  }
+</style>
+<div id="page-wrapper" class="gray-bg dashbard-1">
         <div class="row border-bottom">
     <nav class="navbar navbar-static-top" role="navigation" style="margin-bottom: 0">
         <div class="navbar-header">
@@ -122,59 +132,78 @@
         </ul>
     </nav>
 </div> <!--顶部-->
-        <div class="col-lg-12">
-            <div class="ibox float-e-margins">
-                <div class="ibox-title">
-                    <h5>添加分类</h5>
-                </div>
-                <div class="ibox-content">
-                    <form class="form-horizontal m-t " method="post" action="<?php echo U('add');?>">
-                        <div class="form-group">
-                            <label class="col-sm-3 control-label">首页显示位置：</label>
-                            <div class="col-sm-3">
-                                <select name="layout">
-                                    <option value="left"   <?php if(($data["layout"] == 'left')): ?>selected<?php endif; ?>>左侧</option>
-                                    <option value="bottom" <?php if(($data["layout"] == 'bottom')): ?>selected<?php endif; ?>>底部</option>
-                                </select>
-                            </div>
+        <div class="wrapper wrapper-content">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="ibox float-e-margins">
+                        <div class="ibox-title">
+                            <h5><?php echo ($title); ?></h5>
                         </div>
-                        <div class="form-group">
-                            <label class="col-sm-3 control-label">名称：</label>
-                            <div class="col-sm-3">
-                                <input  type="text" id="type" class="form-control" name="type" value="<?php echo ($data["high_name"]); ?>">
+                        <div class="ibox-content">
+                            <div class="row">
+                                <div class="col-sm-4">
+                                    <div class="input-button">
+                                        <button class="btn btn-warning delete-all" type="button" url="<?php echo U('delAll');?>"><i class="fa fa-minus "></i>&nbsp;删除</button>
+                                    </div>
+                                </div>
+                                <!--搜索开始-->
+                               <!--  <form method="post" action="/php/zhangqie/index.php/Admin/Message/message.html" >
+                                    <div class="col-sm-3">
+                                        <div class="input-group">
+                                            <input type="text" placeholder="请输入分类名称" class="input-sm form-control" name="keyword" value=<?php echo ($keyword); ?>>
+                                            <span class="input-group-btn">
+                                                <button type="submit" class="btn btn-sm btn-primary"> 搜索</button>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </form> -->
+                                <!--搜索结束-->
                             </div>
+                            <!--表格开始    -->
+                            <form action="/php/zhangqie/index.php/Admin/Message/message.html" method="post" name="updateSort" id="updateSort" >
+                                <input type="hidden" name="page_num" value="<?php echo ($_GET['p']); ?>"/>
+                                <div class="table-responsive">
+                                    <table class="table  table-bordered table-hover">
+                                        <thead>
+                                        <tr>
+                                            <th style="width: 35px;">
+                                                <input type="checkbox" id="checkAll" class="check-all">
+                                                <label for="checkAll"></label>
+                                            </th>
+                                            <th>ID</th>
+                                            <th>名称</th>
+                                            <th>邮箱</th>
+                                            <th>内容</th>
+                                            <th style="width: 100px">操作</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <?php if(is_array($data)): foreach($data as $key=>$vo): ?><tr>
+                                                <td>
+                                                    <input class="ids regular-checkbox" type="checkbox" value="<?php echo ($vo["id"]); ?>" name="ids[]" id="check_<?php echo ($vo["entity_id"]); ?>">
+                                                    <label for="check_<?php echo ($vo["entity_id"]); ?>"></label>
+                                                </td>
+                                                <td> <?php echo ($vo["id"]); ?></td>
+                                                <td> <?php echo ($vo["name"]); ?></td>
+                                                <td> <?php echo ($vo["email"]); ?> </td>
+                                                <td id="tdcontent"> <?php echo ($vo["content"]); ?> </td>
+                                                <td>
+                                                    <a class="confirm" href="<?php echo U('delete',array('id'=>$vo['id']));?>">删除</a>
+                                                </td>
+                                            </tr><?php endforeach; endif; ?>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </form>
+                            <!--表格结束-->
                         </div>
-                          <div class="form-group">
-                            <label class="col-sm-3 control-label">名称：</label>
-                            <div class="col-sm-3">
-                                <?php echo ($aaaaa); ?>
-                            </div>
-                        </div>
-                        
-                       
-                        
-                        <div class="form-group">
-                            <div class="col-sm-4 col-sm-offset-3">
-                                <button class="btn btn-primary" type="submit">提交</button>
-                            </div>
-                        </div>
-                    </form>
+                    </div>
                 </div>
             </div>
         </div>
         <!--尾部-->
         
     </div>
-
-<script>
-    $('form').submit(function(){
-        var name = $('#type').val();
-        if(name == ''){
-            layer.msg('请填写名称',{time:1000});
-            return false;
-        }
-    });
-</script>
 
 </div>
 </body>

@@ -88,7 +88,7 @@
                     <li><a href="<?php echo U('Datalist/lists');?>">博客列表</a></li>
                     <li><a href="<?php echo U('MiddleLevel/lists');?>">个人简历</a></li>
                     <li><a href="<?php echo U('ElementaryLevel/lists');?>">生活语录</a></li>
-                    <li><a href="<?php echo U('Hot/lists');?>">留言列表</a></li>
+                    <li><a href="<?php echo U('Message/message');?>">留言列表</a></li>
                 </ul>
             </li>
         </ul>

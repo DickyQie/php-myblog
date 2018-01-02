@@ -62,6 +62,7 @@
             data:{username:username,password:password,code:code},
             success: function(res){
                 if(res.status){
+                	
                     layer.msg(res.message,{time:1000},function(){
                         window.location.href = "<{:U('Index/index')}>";
                     });

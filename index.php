@@ -1,8 +1,7 @@
 <?php
 
-
+if(version_compare(PHP_VERSION,'5.3.0','<'))  die('require PHP > 5.3.0 !');
 define('APP_DEBUG', true);
-
 
 
 
@@ -23,6 +22,6 @@ defined('ReqURL') or define('ReqURL', 'http://api.kdniao.cc/Ebusiness/EbusinessO
 define('APP_PATH', './Application/');
 
 
+//"http://i.tianqi.com/index.php?c=code&id=2"; 天气接口
 
-
-include '\ThinkPHP\ThinkPHP.php';
+require './ThinkPHP/ThinkPHP.php';

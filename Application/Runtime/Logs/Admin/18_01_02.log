@@ -1,0 +1,164 @@
+[ 2018-01-02T09:57:33+08:00 ] ::1 /php/zhangqie/index.php/Admin/Public/checkLogin.html
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000325s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000560s ]
+
+[ 2018-01-02T09:57:39+08:00 ] ::1 /php/zhangqie/index.php/Admin/Public/checkLogin.html
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000330s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000582s ]
+SQL: SHOW COLUMNS FROM `zq_admin` [ RunTime:0.0552s ]
+SQL: SELECT * FROM `zq_admin` WHERE `username` = 'zhangqie' LIMIT 1   [ RunTime:0.0009s ]
+NOTIC: [2] Invalid argument supplied for foreach() E:\Web\zendstudio\Apache\htdocs\php\zhangqie\ThinkPHP\Library\Think\Db\Driver.class.php 第 504 行.
+SQL: UPDATE `zq_admin` SET `ip`='::1',`logintime`='2018-01-02 09:57:39' [ RunTime:0.0273s ]
+
+[ 2018-01-02T10:36:30+08:00 ] ::1 /php/zhangqie/index.php/Admin/MiddleLevel/lists.html
+ERR: 无法加载控制器:MiddleLevel
+
+[ 2018-01-02T11:04:50+08:00 ] ::1 /php/zhangqie/index.php/Admin/Datalist/index.html
+ERR: 非法操作:index
+
+[ 2018-01-02T11:05:18+08:00 ] ::1 /php/zhangqie/index.php/Admin/Datalist/index.html
+ERR: 非法操作:index
+
+[ 2018-01-02T14:32:41+08:00 ] ::1 /php/zhangqie/index.php/Admin/Public/checkLogin.html
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000450s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000750s ]
+SQL: SHOW COLUMNS FROM `zq_admin` [ RunTime:0.0193s ]
+SQL: SELECT * FROM `zq_admin` WHERE `username` = 'zhangqie' LIMIT 1   [ RunTime:0.0008s ]
+NOTIC: [2] Invalid argument supplied for foreach() E:\Web\zendstudio\Apache\htdocs\php\zhangqie\ThinkPHP\Library\Think\Db\Driver.class.php 第 504 行.
+SQL: UPDATE `zq_admin` SET `ip`='::1',`logintime`='2018-01-02 14:32:41' [ RunTime:0.0377s ]
+
+[ 2018-01-02T16:49:57+08:00 ] ::1 /php/zhangqie/index.php/Admin/Message/delete/id/4.html
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000635s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001109s ]
+SQL: SHOW COLUMNS FROM `zq_message` [ RunTime:0.0152s ]
+SQL: DELETE FROM `zq_message` WHERE ( id=4 ) [ RunTime:0.0769s ]
+
+[ 2018-01-02T16:50:15+08:00 ] ::1 /php/zhangqie/index.php/Admin/Message/delAll.html
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000713s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001271s ]
+SQL: SHOW COLUMNS FROM `zq_message` [ RunTime:0.0146s ]
+SQL: DELETE FROM `zq_message` WHERE `id` IN ('2','3') [ RunTime:0.0859s ]
+
+[ 2018-01-02T17:48:03+08:00 ] ::1 /php/zhangqie/index.php/Admin/Public/checkLogin.html
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000329s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000605s ]
+SQL: SHOW COLUMNS FROM `zq_admin` [ RunTime:0.0147s ]
+SQL: SELECT * FROM `zq_admin` WHERE `username` = 'zhangqie' LIMIT 1   [ RunTime:0.0041s ]
+NOTIC: [2] Invalid argument supplied for foreach() E:\Web\zendstudio\Apache\htdocs\php\zhangqie\ThinkPHP\Library\Think\Db\Driver.class.php 第 504 行.
+SQL: UPDATE `zq_admin` SET `ip`='::1',`logintime`='2018-01-02 17:48:03' [ RunTime:0.0516s ]
+
+[ 2018-01-02T18:15:52+08:00 ] ::1 /php/zhangqie/index.php/Admin/Public/checkLogin.html
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000330s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000605s ]
+
+[ 2018-01-02T18:16:00+08:00 ] ::1 /php/zhangqie/index.php/Admin/Public/checkLogin.html
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000327s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000601s ]
+SQL: SHOW COLUMNS FROM `zq_admin` [ RunTime:0.0441s ]
+SQL: SELECT * FROM `zq_admin` WHERE `username` = 'zhangqie' LIMIT 1   [ RunTime:0.0008s ]
+NOTIC: [2] Invalid argument supplied for foreach() E:\Web\zendstudio\Apache\htdocs\php\zhangqie\ThinkPHP\Library\Think\Db\Driver.class.php 第 504 行.
+SQL: UPDATE `zq_admin` SET `ip`='::1',`logintime`='2018-01-02 18:16:00' [ RunTime:0.0950s ]
+
+[ 2018-01-02T18:16:00+08:00 ] ::1 /php/zhangqie/index.php/Admin/Public/checkLogin.html
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000334s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000613s ]
+
+[ 2018-01-02T18:16:01+08:00 ] ::1 /php/zhangqie/index.php/Admin/Public/checkLogin.html
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000863s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001408s ]
+
+[ 2018-01-02T18:16:01+08:00 ] ::1 /php/zhangqie/index.php/Admin/Public/%7B:U('Index/index')%7D
+ERR: 非法操作:{:U('Index
+
+[ 2018-01-02T18:16:01+08:00 ] ::1 /php/zhangqie/index.php/Admin/Public/checkLogin.html
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001177s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001907s ]
+
+[ 2018-01-02T18:28:57+08:00 ] ::1 /php/zhangqie/index.php/Admin/Public/checkLogin.html
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000442s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000764s ]
+SQL: SHOW COLUMNS FROM `zq_admin` [ RunTime:0.0082s ]
+SQL: SELECT * FROM `zq_admin` WHERE `username` = 'zq' LIMIT 1   [ RunTime:0.0007s ]
+NOTIC: [2] Invalid argument supplied for foreach() E:\Web\zendstudio\Apache\htdocs\php\zhangqie\ThinkPHP\Library\Think\Db\Driver.class.php 第 504 行.
+SQL: UPDATE `zq_admin` SET `ip`='::1',`logintime`='2018-01-02 18:28:57' [ RunTime:0.0962s ]
+
+[ 2018-01-02T18:32:58+08:00 ] ::1 /php/zhangqie/index.php/Admin/Public/checkLogin.html
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000459s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000831s ]
+SQL: SHOW COLUMNS FROM `zq_admin` [ RunTime:0.0089s ]
+SQL: SELECT * FROM `zq_admin` WHERE `username` = 'zq' LIMIT 1   [ RunTime:0.0008s ]
+SQL: UPDATE `zq_admin` SET `ip`='::1',`logintime`='2018-01-02 18:32:58' WHERE ( id=2 ) [ RunTime:0.0650s ]
+
+[ 2018-01-02T19:59:39+08:00 ] ::1 /php/zhangqie/index.php/Admin/Public/checkLogin.html
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000342s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000760s ]
+SQL: SHOW COLUMNS FROM `zq_admin` [ RunTime:0.0599s ]
+SQL: SELECT * FROM `zq_admin` WHERE `username` = 'zq' LIMIT 1   [ RunTime:0.0009s ]
+SQL: UPDATE `zq_admin` SET `ip`='::1',`logintime`='2018-01-02 19:59:38' WHERE ( id=2 ) [ RunTime:0.0409s ]
+
+[ 2018-01-02T20:24:03+08:00 ] ::1 /php/zhangqie/index.php/Admin/Public/checkLogin.html
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000556s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000948s ]
+SQL: SHOW COLUMNS FROM `zq_admin` [ RunTime:0.0088s ]
+SQL: SELECT * FROM `zq_admin` WHERE `username` = 'zq' LIMIT 1   [ RunTime:0.0011s ]
+
+[ 2018-01-02T20:24:16+08:00 ] ::1 /php/zhangqie/index.php/Admin/Public/checkLogin.html
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000606s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001129s ]
+SQL: SHOW COLUMNS FROM `zq_admin` [ RunTime:0.0052s ]
+SQL: SELECT * FROM `zq_admin` WHERE `username` = 'zq' LIMIT 1   [ RunTime:0.0004s ]
+SQL: UPDATE `zq_admin` SET `ip`='::1',`logintime`='2018-01-02 20:24:16' WHERE ( id=2 ) [ RunTime:0.0327s ]
+
+[ 2018-01-02T21:04:05+08:00 ] ::1 /php/zhangqie/index.php/Admin/Public/checkLogin.html
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000328s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000611s ]
+SQL: SHOW COLUMNS FROM `zq_admin` [ RunTime:0.0043s ]
+SQL: SELECT * FROM `zq_admin` WHERE `username` = 'zq' LIMIT 1   [ RunTime:0.0004s ]
+SQL: UPDATE `zq_admin` SET `ip`='::1',`logintime`='2018-01-02 21:04:05' WHERE ( id=2 ) [ RunTime:0.0311s ]
+
+[ 2018-01-02T21:06:18+08:00 ] ::1 /php/zhangqie/index.php/Admin/Public/checkLogin.html
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000383s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000659s ]
+SQL: SHOW COLUMNS FROM `zq_admin` [ RunTime:0.0078s ]
+SQL: SELECT * FROM `zq_admin` WHERE `username` = 'zq' LIMIT 1   [ RunTime:0.0007s ]
+NOTIC: [8] Undefined index: d E:\Web\zendstudio\Apache\htdocs\php\zhangqie\Application\Admin\Controller\PublicController.class.php 第 58 行.
+
+[ 2018-01-02T21:06:27+08:00 ] ::1 /php/zhangqie/index.php/Admin/Public/checkLogin.html
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000495s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000969s ]
+
+[ 2018-01-02T21:06:38+08:00 ] ::1 /php/zhangqie/index.php/Admin/Public/checkLogin.html
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000323s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000599s ]
+SQL: SHOW COLUMNS FROM `zq_admin` [ RunTime:0.0072s ]
+SQL: SELECT * FROM `zq_admin` WHERE `username` = 'zq' LIMIT 1   [ RunTime:0.0007s ]
+NOTIC: [8] Undefined index: d E:\Web\zendstudio\Apache\htdocs\php\zhangqie\Application\Admin\Controller\PublicController.class.php 第 58 行.
+
+[ 2018-01-02T21:07:29+08:00 ] ::1 /php/zhangqie/index.php/Admin/Public/checkLogin.html
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000355s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000675s ]
+SQL: SHOW COLUMNS FROM `zq_admin` [ RunTime:0.0072s ]
+SQL: SELECT * FROM `zq_admin` WHERE `username` = 'zq' LIMIT 1   [ RunTime:0.0010s ]
+SQL: UPDATE `zq_admin` SET `ip`='::1',`logintime`='2018-01-02 21:07:29' WHERE `id` = 2 [ RunTime:0.0396s ]
+

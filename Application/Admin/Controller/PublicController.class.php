@@ -24,11 +24,13 @@ class PublicController extends Controller{
 				'imageH'=>42,
 				'imageW'=>108,
 				'length'=>4,
+				'fontttf'=>'5.ttf',
 				'useNoise'=>true,//是否添加杂点
 				'codeSet' => '0123456789'//正则
+						
 		);
 		$virfy=new \Think\Verify($config);
-		$virfy->entry();
+		$virfy->entry('imgcode');
 		
 	}
 	
@@ -53,12 +55,13 @@ class PublicController extends Controller{
 			$admin=$this->checkPassword($m,$pwd);
 			if ($admin){
 				$micon=array(
+						"id"=>$admin['id'],
 						"ip"=>$this->getIp(),
 						"logintime"=>date("Y-m-d H:i:s")
 				);
-				$save=M("admin")->where("id="+$admin['id'])->save($micon);
+				$save=M("admin")->save($micon);
 				if ($save){
-					 session("adminzq_id",$admin['id']);
+					session("adminzq_id",$admin['id']);
 					session("adminzq_name",$admin['username']);
 					$res['status']=1;
 					$res['message']='登录成功';
@@ -80,7 +83,7 @@ class PublicController extends Controller{
 	 */
 	function checkCode($param) {
 		$virfy=new \Think\Verify();
-		return $virfy->check($param);
+		return $virfy->check($param,'imgcode');
 	}
 	
 	/**
@@ -90,7 +93,7 @@ class PublicController extends Controller{
 	function checkPassword($user,$pwd) {
 		$map['username']=$user;
 		$admin=M('admin')->where($map)->find();
-		if($pwd===$admin['password']){
+		if($pwd === $admin['password']){
 			return $admin;
 		}else {
 			return false;

@@ -15,6 +15,11 @@
 
 
 
+<script src="/php/zhangqie/Public/js/jquery-2.1.1.min.js"></script>
+<!--Layer-->
+<script src="/php/zhangqie/Public/static/layer/layer.js"></script>
+
+
 <!--sdf  -->
 
 <link href="/php/zhangqie/Public/css/index.css" rel="stylesheet">

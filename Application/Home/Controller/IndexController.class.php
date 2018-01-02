@@ -32,5 +32,15 @@ class IndexController extends Controller {
     	$this->redirect('Quotations/quotations');
     }
     
+    
+    public function blogcontent(){
+    	
+    	$id=I('id');
+    	$data=M("datalist")->where('id='.$id)->find();
+    	$data['content']=html_entity_decode($data['content']);
+    	$this->assign('datacontent',$data);
+    	$this->display();
+    }
+    
 
 }

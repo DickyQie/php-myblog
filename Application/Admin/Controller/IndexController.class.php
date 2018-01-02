@@ -10,4 +10,6 @@ class IndexController extends BaseController{
 		$this->redirect("Datalist/lists");
 	}
 	
+	
+	
 }

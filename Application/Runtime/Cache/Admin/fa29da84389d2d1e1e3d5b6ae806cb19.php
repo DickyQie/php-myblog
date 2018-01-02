@@ -125,29 +125,63 @@
         <div class="col-lg-12">
             <div class="ibox float-e-margins">
                 <div class="ibox-title">
-                    <h5>修改分类</h5>
+                    <h5>修改博客内容</h5>
                 </div>
                 <div class="ibox-content">
                     <form class="form-horizontal m-t " method="post" action="<?php echo U('edit');?>">
-                    	<input type="hidden" name='id' value="<?php echo ($data[id]); ?>">
                         <div class="form-group">
-                            <label class="col-sm-3 control-label">首页显示位置：</label>
-                            <div class="col-sm-3">
-                                <select name="layout">
-                                    <option value="left"   <?php if(($data["layout"] == 'left')): ?>selected<?php endif; ?>>左侧</option>
-                                    <option value="bottom" <?php if(($data["layout"] == 'bottom')): ?>selected<?php endif; ?>>底部</option>
+                            <label class="col-sm-3 control-label">博客类型：</label>
+                            <div class="col-sm-9">
+                                <select id="typeid" name="typeid">
+                                    <option value="0">请选择分类类型</option>
+                                    <?php if(is_array($type)): foreach($type as $key=>$vo): ?><option value="<?php echo ($vo["id"]); ?>" <?php if(($vo["id"] == $data['typeid'])): ?>selected<?php endif; ?> ><?php echo ($vo["type"]); ?></option><?php endforeach; endif; ?>
                                 </select>
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="col-sm-3 control-label">名称：</label>
                             <div class="col-sm-3">
-                                <input  type="text" id="type" class="form-control" name="type" value="<?php echo ($data["type"]); ?>">
+                                <input  type="text" id="title" class="form-control" name="title" value="<?php echo ($data["title"]); ?>">
                             </div>
                         </div>
-                       
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">图片链接：</label>
+                            <div class="col-sm-3">
+                                <input  type="text" id="href" class="form-control" name="href" value="<?php echo ($data["image"]); ?>">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">是否推荐：</label>
+                            <div class="col-sm-6">
+                                <input type="radio" name="is_recommend" value="0" <?php if(($data["is_recommend"] != 1)): ?>checked<?php endif; ?> > 否
+                                <input type="radio" name="is_recommend" value="1" <?php if(($data["is_recommend"] == 1)): ?>checked<?php endif; ?> > 是
+                                <span style="color:indianred">（推荐后，会在首页右侧显示）</span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">作者：</label>
+                            <div class="col-sm-3">
+                                <input  type="text" id="author" class="form-control" name="author" value="<?php echo ($data["author"]); ?>">
+                            </div>
+                         </div>
+                         <div class="form-group">
+                            <label class="col-sm-3 control-label">摘要：</label>
+                            <div class="col-sm-3">
+                            	<textarea class="form-control" id="abstract" name="abstract" rows="6"><?php echo ($data["abstract"]); ?></textarea>
+                            </div>
+                         </div>
+                        
+                         <div  class="form-group">
+                            <label class="col-sm-3 control-label">编辑内容：</label>
+                          	<div class="col-sm-9">
+				    	   		<script id="editor" type="text/plain" name="content" style="width:862px;height:400px;">
+									<?php echo ($data["content"]); ?>
+								</script>
+				    	 	</div>
+					    </div>
                         <div class="form-group">
                             <div class="col-sm-4 col-sm-offset-3">
+                                <input type="hidden" name='id' value="<?php echo ($_GET['id']); ?>">
                                 <button class="btn btn-primary" type="submit">提交</button>
                             </div>
                         </div>
@@ -158,16 +192,32 @@
         <!--尾部-->
         
     </div>
-
-<script>
-    $('form').submit(function(){
-        var name = $('#type').val();
-        if(name == ''){
-            layer.msg('请填写名称',{time:1000});
-            return false;
-        }
-    });
-</script>
+    <script>
+    
+    	var ue = UE.getEditor('editor');
+        $('form').submit(function(){
+            var name = $('#title').val();
+            var sort = $("#author").val();
+            var type = $("#typeid").val();
+            var abstramt = $("#abstract").val();
+            if(type == 0){
+            	layes.msg('请选择分类',{time:1000});
+            	return;
+            }
+            if(name == ''){
+                layer.msg('请填写名称',{time:1000});
+                return false;
+            }
+            if(author == ''){
+                layer.msg('请填写作者',{time:1000});
+                return false;
+            }
+            if(abstramt == ''){
+            	 layer.msg('请填写摘要',{time:1000});
+                 return false;
+            }
+        });
+    </script>
 
 </div>
 </body>

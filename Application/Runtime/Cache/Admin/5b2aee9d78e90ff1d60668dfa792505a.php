@@ -203,7 +203,7 @@
 	    
         $('form').submit(function(){
             var name = $('#title').val();
-            var sort = $("#sort").val();
+            var sort = $("#author").val();
             var type = $('#typeid').val();
             if(type == 0){
             	layer.msg('请选择正确分类',{time:1000});

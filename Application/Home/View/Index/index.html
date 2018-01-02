@@ -6,6 +6,8 @@
 </style>
 	<div class="ibody">
 	  <include file="Common/navheader"/> <!--顶部-->
+	  
+	  
 	  <article>
 	    <div class="banner">
 	      <ul class="texts">
@@ -22,11 +24,11 @@
 	      
 	      <foreach name="datalist" item="vo">
 	      <div class="blogs">
-	        <h3><a href="/"><{$vo.title}></a></h3>
+	        <h3><a href="<{:U(blogcontent,array('id'=>$vo['id']))}>"><{$vo.title}></a></h3>
 	        <figure><img src="<{$vo.image}>" ></figure>
 	        <ul>
 	          <p><{$vo.abstract}>......</p>
-	          <a href="/" target="_blank" class="readmore">阅读全文&gt;&gt;</a>
+	          <a href="<{:U(blogcontent,array('id'=>$vo['id']))}>" class="readmore">阅读全文&gt;&gt;</a>
 	        </ul>
 	        <p class="autor"><span>作者：<{$vo.author}></span><span>分类：【<a href="/"><{$vo['typeid']|get_parent_names}></a>】</span><span>浏览（<a href="/">459</a>）</span></p>
 	        <div class="dateview">2014-04-08</div>
@@ -39,6 +41,8 @@
               <div class="page"><{$page}></div>
          </div>
 	  </article>
+	  
+	  
 	
 	
 	
@@ -53,7 +57,7 @@
 	      <p>职业：Android、PHP工程师 </p>
 	      <p>籍贯：四川省―泸州市</p>
 	      <p>电话：18523978916</p>
-	      <p>邮箱：zhangqiem@162.com</p>
+	      <p>邮箱：zhangqiem@126.com</p>
 	    </div>
 	    <div class="bdsharebuttonbox"><a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a><a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a><a href="#" class="bds_tqq" data-cmd="tqq" title="分享到腾讯微博"></a><a href="#" class="bds_renren" data-cmd="renren" title="分享到人人网"></a><a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a><a href="#" class="bds_more" data-cmd="more"></a></div>
 	    <div class="tj_news">
@@ -90,8 +94,9 @@
 	        <p>友情链接</p>
 	      </h2>
 	      <ul>
-	        <li><a href="/">杨青个人博客</a></li>
-	        <li><a href="/">3DST技术社区</a></li>
+	        <li><a target="_blank" href="http://blog.csdn.net/dickyqie">CSDN个人博客</a></li>
+	        <li><a target="_blank" href="http://www.cnblogs.com/zhangqie/">个人博客园</a></li>
+	        <li><a target="_blank" href="https://github.com/DickyQie">GitHub</a></li>
 	      </ul>
 	    </div>
 	

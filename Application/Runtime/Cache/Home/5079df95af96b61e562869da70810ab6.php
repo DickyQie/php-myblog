@@ -62,10 +62,9 @@
  
  <!--顶部-->
 	  
-	  
-	  <article>
+	  <article >
 	    <div class="banner">
-	      <ul class="texts">
+	       <ul class="texts">
 	        <p>The best life is use of willing attitude, a happy-go-lucky life. </p>
 	        <p>最好的生活是用心甘情愿的态度，过随遇而安的生活。</p>
 	      </ul>
@@ -74,28 +73,22 @@
 	    
 	    <div class="bloglist">
 	      <h2>
-	        <p><span>推荐</span>文章</p>
+	        <p><span>博客</span>详情</p>
 	      </h2>
+	     </div>
+	      <h2 class="c_titile"><?php echo ($datacontent["title"]); ?></h2>
+	      <p class="box_c"><span class="d_time">发布时间：<?php echo ($datacontent["time"]); ?></span><span>编辑：<?php echo ($datacontent["author"]); ?></span><span>浏览（<?php echo ($datacontent["volume"]); ?>）</span></p>
 	      
-	      <?php if(is_array($datalist)): foreach($datalist as $key=>$vo): ?><div class="blogs">
-	        <h3><a href="<?php echo U(blogcontent,array('id'=>$vo['id']));?>"><?php echo ($vo["title"]); ?></a></h3>
-	        <figure><img src="<?php echo ($vo["image"]); ?>" ></figure>
-	        <ul>
-	          <p><?php echo ($vo["abstract"]); ?>......</p>
-	          <a href="<?php echo U(blogcontent,array('id'=>$vo['id']));?>" class="readmore">阅读全文&gt;&gt;</a>
-	        </ul>
-	        <p class="autor"><span>作者：<?php echo ($vo["author"]); ?></span><span>分类：【<a href="/"><?php echo (get_parent_names($vo['typeid'])); ?></a>】</span><span>浏览（<a href="/">459</a>）</span></p>
-	        <div class="dateview">2014-04-08</div>
-	      </div><?php endforeach; endif; ?>
-	     
-	    </div>
+	      <div style="padding-left:20px;padding-right:5px;">
+	         <?php echo ($datacontent["content"]); ?>
+	      </div>
+	      
+	      
+	      <div class="keybq">
+	        <p><span>关键字词</span>：切切歆语,个人博客</p>
+	      </div>
 	    
-	     <div style="padding-top:25px;">
-              <div class="page"><?php echo ($page); ?></div>
-         </div>
 	  </article>
-	  
-	  
 	
 	
 	
