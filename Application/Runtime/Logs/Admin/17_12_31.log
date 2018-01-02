@@ -1,0 +1,86 @@
+[ 2017-12-31T14:34:46+08:00 ] ::1 /php/zhangqie/index.php/Admin/Public/checkLogin.html
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000842s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001284s ]
+
+[ 2017-12-31T14:34:55+08:00 ] ::1 /php/zhangqie/index.php/Admin/Public/checkLogin.html
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001168s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001789s ]
+SQL: SHOW COLUMNS FROM `zq_admin` [ RunTime:0.0206s ]
+SQL: SELECT * FROM `zq_admin` WHERE `username` = 'zhangqie' LIMIT 1   [ RunTime:0.0008s ]
+NOTIC: [2] Invalid argument supplied for foreach() E:\Web\zendstudio\Apache\htdocs\php\zhangqie\ThinkPHP\Library\Think\Db\Driver.class.php 第 504 行.
+SQL: UPDATE `zq_admin` SET `ip`='::1',`logintime`='2017-12-31 14:34:55' [ RunTime:0.0460s ]
+
+[ 2017-12-31T15:17:16+08:00 ] ::1 /php/zhangqie/index.php/Admin/Type/delete/id/1.html
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000677s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001207s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000883s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000950s ]
+
+[ 2017-12-31T15:24:35+08:00 ] ::1 /php/zhangqie/index.php/Admin/Type/delete/id/9.html
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000745s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001073s ]
+SQL: SHOW COLUMNS FROM `zq_type` [ RunTime:0.0077s ]
+SQL: DELETE FROM `zq_type` WHERE ( id=9 ) [ RunTime:0.0472s ]
+
+[ 2017-12-31T15:29:59+08:00 ] ::1 /php/zhangqie/index.php/Admin/Type/delAll.html
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000813s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001232s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000818s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000872s ]
+
+[ 2017-12-31T15:38:25+08:00 ] ::1 /php/zhangqie/index.php/Admin/Type/delAll.html
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000503s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000818s ]
+SQL: SHOW COLUMNS FROM `zq_type` [ RunTime:0.0076s ]
+SQL: DELETE FROM `zq_type` WHERE `id` IN ('10','11') [ RunTime:0.0328s ]
+
+[ 2017-12-31T15:43:51+08:00 ] ::1 /php/zhangqie/index.php/Admin/Datalist/add.html
+ERR: 1292:Incorrect datetime value: '2017-12-50 15:03:50' for column 'time' at row 1
+ [ SQL语句 ] : INSERT INTO `zq_datalist` (`typeid`,`title`,`image`,`author`,`abstract`,`content`,`time`) VALUES ('7','ceshi','http','zq','zq','<p><img width=\"530\" height=\"340\" src=\"http://api.map.baidu.com/staticimage?center=116.404,39.915&zoom=10&width=530&height=340&markers=116.404,39.915\"/></p>','2017-12-50 15:03:50')
+
+[ 2017-12-31T15:47:35+08:00 ] ::1 /php/zhangqie/index.php/Admin/Datalist/add.html
+ERR: 1292:Incorrect datetime value: '2017-12-34' for column 'time' at row 1
+ [ SQL语句 ] : INSERT INTO `zq_datalist` (`typeid`,`title`,`image`,`author`,`abstract`,`content`,`time`) VALUES ('7','黄飞鸿','http','张切','123','<p>ppp</p>','2017-12-34')
+
+[ 2017-12-31T16:04:32+08:00 ] ::1 /php/zhangqie/index.php/Admin/Datalist/delete/id/8.html
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000687s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001222s ]
+SQL: SHOW COLUMNS FROM `zq_datalist` [ RunTime:0.0039s ]
+SQL: DELETE FROM `zq_datalist` WHERE ( id=8 ) [ RunTime:0.0470s ]
+
+[ 2017-12-31T16:04:44+08:00 ] ::1 /php/zhangqie/index.php/Admin/Datalist/delAll.html
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000391s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000701s ]
+SQL: SHOW COLUMNS FROM `zq_datalist` [ RunTime:0.0116s ]
+SQL: DELETE FROM `zq_datalist` WHERE `id` IN ('6','7') [ RunTime:0.0320s ]
+
+[ 2017-12-31T16:11:54+08:00 ] ::1 /php/zhangqie/index.php/Admin/Public/logout.html
+ERR: 非法操作:logout
+
+[ 2017-12-31T16:12:20+08:00 ] ::1 /php/zhangqie/index.php/Admin/Public/logout.html
+ERR: 非法操作:logout
+
+[ 2017-12-31T16:14:45+08:00 ] ::1 /php/zhangqie/index.php/Admin/Public/checkLogin.html
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000335s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000609s ]
+
+[ 2017-12-31T16:14:51+08:00 ] ::1 /php/zhangqie/index.php/Admin/Public/checkLogin.html
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000537s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000971s ]
+SQL: SHOW COLUMNS FROM `zq_admin` [ RunTime:0.0082s ]
+SQL: SELECT * FROM `zq_admin` WHERE `username` = 'zhangqie' LIMIT 1   [ RunTime:0.0007s ]
+NOTIC: [2] Invalid argument supplied for foreach() E:\Web\zendstudio\Apache\htdocs\php\zhangqie\ThinkPHP\Library\Think\Db\Driver.class.php 第 504 行.
+SQL: UPDATE `zq_admin` SET `ip`='::1',`logintime`='2017-12-31 16:14:51' [ RunTime:0.0394s ]
+

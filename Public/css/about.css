@@ -16,5 +16,5 @@ a.blog_link { color: #0f9c7c; margin: 0 20px }
 .avatar a:hover span { display: block; margin-top: 0; }
 .topspaceinfo { background: #e41635; padding: 40px 20px; color: #fff; text-shadow: 1px 1px rgba(0,0,0,.3); }
 .topspaceinfo h1 { font-size: 16px; line-height: 40px; font-weight: bold; }
-.about_c { margin: 10px 0; color: #fff; line-height: 22px; }
-.about_c p { display: block; padding-left: 20px; margin-bottom: 5px }
+/* .about_c { margin: 10px 0; color: #fff; line-height: 22px; }
+.about_c p { display: block; padding-left: 20px; margin-bottom: 5px } */

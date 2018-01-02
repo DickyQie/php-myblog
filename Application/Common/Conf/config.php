@@ -27,4 +27,6 @@ return array(
 		'DB_PWD'                =>  '123456',          // 密码
 		'DB_PORT'               =>  '',        // 端口
 		'DB_PREFIX'             =>  'zq_',    // 数据库表前缀
+		
+		//'LOAD_EXT_FILE' => 'KdApiSearchDemo',
 );
