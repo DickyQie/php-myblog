@@ -117,9 +117,9 @@ a.readmore { background: #e41635; color: #fff; padding: 5px 10px; float: right; 
 .tj_t1 { background: #0f9c7c }
 .tj_t2 { background: #b0e516 }
 .tj_news ul { margin: 20px 0 20px 20px }
-.tj_news ul li a:hover, .links ul li a:hover { text-decoration: underline; color: #FFF }
+.tj_news ul li a:hover, .links ul li a:hover { text-decoration: underline; color: #c0c0c0 }
 .tj_news ul li { height: 25px; line-height: 25px; clear: both; padding-left: 5px; overflow: hidden; padding-left: 15px; background: url(../images/li.jpg) no-repeat left center; }
-.tj_news ul li a, .links ul li a { color: #bbbbbb; }
+.tj_news ul li a, .links ul li a { color: #ffffff; }
 /* ”—«È¡¥Ω” */
 .links{
     margin-bottom: 15px;

@@ -1,0 +1,62 @@
+<extend name="Common/common" />
+<block name="main">
+    <div id="page-wrapper" class="gray-bg dashbard-1">
+        <include file="Common/nav-header"/> <!--顶部-->
+        <div class="wrapper wrapper-content">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="ibox float-e-margins">
+                        <div class="ibox-title">
+                            <h5>个人简历信息</h5>
+                        </div>
+                       
+                        
+                        <div class="ibox-content">
+                            <div class="row">
+                                <div class="col-sm-4">
+                                    <div class="input-button">
+                                        <a href="<{:U('add')}>">
+                                            <button class="btn btn-primary add" type="button"><i class="fa fa-plus"></i>&nbsp;新增</button>
+                                        </a>
+                                        <button class="btn btn-warning delete-all" type="button" url="<{:U('delAll')}>"><i class="fa fa-minus "></i>&nbsp;删除</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--表格开始    -->
+                            <form action="__SELF__" method="post" name="updateSort" id="updateSort" >
+                                <input type="hidden" name="page_num" value="<{$_GET['p']}>"/>
+                                <div class="table-responsive">
+                                    <table class="table  table-bordered table-hover">
+                                        <thead>
+                                        <tr>
+                                            <th style="width: 35px;">
+                                                <input type="checkbox" id="checkAll" class="check-all">
+                                                <label for="checkAll"></label>
+                                            </th>
+                                            <th>ID</th>
+                                            <th>简历信息</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                          <tr>
+                                          	  <td>
+                                                 <input class="ids regular-checkbox" type="checkbox" value="1" name="ids[]">
+                                              </td>
+                                              <td> 1 </td>
+                                              <td> 未开发 </td>
+                                          </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </form>
+                            <!--表格结束-->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--尾部-->
+        <include file="Common/admin:footer"/>
+    </div>
+</block>
+
