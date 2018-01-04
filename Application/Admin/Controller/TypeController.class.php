@@ -21,7 +21,24 @@ class TypeController extends BaseController{
 		$this->assign("typelist",$data);
 		
 		
-
+		
+		// 访问fun_a.php的方法  在Application/Common/Conf/config.php 添加	'LOAD_EXT_FILE' => 'function.a',
+		
+		//验证  Common下面的方法访问  
+		
+		/*
+		 * html 文件中访问 函数
+		 *  <div><{$typelist|fun_b}></div>
+		<div><{$typelist|get_json}></div>
+		<div><{$typelist|fun_a}></div> */
+		
+		
+	/* 
+	 * 	测试访问函数
+	 *  echo fun_a();
+		echo fun_b();
+		echo fun_c();
+		echo getJson(); */
 		
 		$this->display();
 	}
