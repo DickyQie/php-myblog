@@ -118,9 +118,4 @@ class DatalistController extends BaseController{
 	}
 	
 	
-	function home() {
-		//U('Home\Index\blogcontent',array('id'=>1));
-	}
-	
-	
 }
