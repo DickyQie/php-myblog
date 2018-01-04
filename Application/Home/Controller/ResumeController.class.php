@@ -11,6 +11,9 @@ class ResumeController extends Controller{
 	
 	
 	function resume(){
+		//查询6条数据
+		$data=M("datalist")->limit("0","6")->select();
+		$this->assign("data",$data);
 		$this->display();
 	}
 	
