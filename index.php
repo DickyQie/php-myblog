@@ -11,14 +11,6 @@ define('TMPL_CACHE_ON', false);
 define('ACTION_CACHE_ON', false);
 
 
-defined('EBusinessID') or define('EBusinessID', '1318190');
-//电商加密私钥，快递鸟提供，注意保管，不要泄漏
-defined('AppKey') or define('AppKey', '52bd54fd-8055-430a-815b-2c4dd318a078');
-//测试请求url
-//defined('ReqURL') or define('ReqURL', 'http://testapi.kdniao.cc:8081/api/dist');
-
-defined('ReqURL') or define('ReqURL', 'http://api.kdniao.cc/Ebusiness/EbusinessOrderHandle.aspx');
-
 define('APP_PATH', './Application/');
 
 
