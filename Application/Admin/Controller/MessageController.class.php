@@ -11,6 +11,10 @@ namespace Admin\Controller;
  */
 class MessageController extends BaseController{
 	
+	
+	/***
+	 * 留言信息列表
+	 */
 	function message(){
 		
 		$data=M("message")->select();
@@ -19,7 +23,9 @@ class MessageController extends BaseController{
 		$this->display();
 	}
 	
-	
+	/***
+	 * 单个删除
+	 */
 	function delete(){
 		$id=I('id');
 		$res=M("message")->where("id=".$id)->delete();
@@ -30,7 +36,9 @@ class MessageController extends BaseController{
 		}
 		
 	}
-	
+	/****
+	 * 筛选删除
+	 */
 	function delAll(){
 		$ids=I('ids');
 		$map['id']=array('in',$ids);

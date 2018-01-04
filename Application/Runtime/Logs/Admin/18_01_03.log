@@ -1,0 +1,19 @@
+[ 2018-01-03T21:08:21+08:00 ] ::1 /php/zhangqie/index.php/Admin/Public/checkLogin.html
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000751s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001339s ]
+SQL: SHOW COLUMNS FROM `zq_admin` [ RunTime:0.0366s ]
+SQL: SELECT * FROM `zq_admin` WHERE `username` = 'zhangqie' LIMIT 1   [ RunTime:0.0008s ]
+SQL: UPDATE `zq_admin` SET `ip`='::1',`logintime`='2018-01-03 21:08:21' WHERE `id` = 1 [ RunTime:0.0333s ]
+
+[ 2018-01-03T22:14:05+08:00 ] ::1 /php/zhangqie/index.php/Admin/Public/checkLogin.html
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000652s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001120s ]
+SQL: SHOW COLUMNS FROM `zq_admin` [ RunTime:0.0090s ]
+SQL: SELECT * FROM `zq_admin` WHERE `username` = 'zq' LIMIT 1   [ RunTime:0.0010s ]
+SQL: UPDATE `zq_admin` SET `ip`='::1',`logintime`='2018-01-03 22:14:05' WHERE `id` = 2 [ RunTime:0.0286s ]
+
+[ 2018-01-03T22:14:24+08:00 ] ::1 /php/zhangqie/index.php/Admin/MiddleLevel/lists.html
+ERR: 无法加载控制器:MiddleLevel
+

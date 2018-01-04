@@ -2,6 +2,13 @@
 namespace Home\Controller;
 use Think\Controller;
 use Think\Page;
+
+
+/****
+ * 博客首页
+ * @author zhnagqie
+ *
+ */
 class IndexController extends Controller {
 	
     public function index(){

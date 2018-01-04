@@ -4,6 +4,7 @@ namespace Admin\Controller;
 
 
 use Think\Controller;
+
 class TypeController extends BaseController{
 	
 	
@@ -20,24 +21,14 @@ class TypeController extends BaseController{
 		$this->assign("typelist",$data);
 		
 		
-		//$addd=$this->orderTracesSubByJson();
-		//echo $addd;
-		
-		// 访问KdApiSearchDemo.php的方法  在Application/Common/Conf/config.php 添加	'LOAD_EXT_FILE' => 'KdApiSearchDemo',
-		//$addddd=getOrderTracesByJson();
-		//echo $addddd;
-		
-		//验证  Common下面的方法访问  
-	/*  	
-        <!-- 访问 KdApiSearchDemo.php的方法-->
-        <div><{$typelist|aaaa}></div> -->
-		<!-- 访问function方法 -->
-		<!--      <div><{$typelist|orderTracesSubByJson}></div> -->*/
+
 		
 		$this->display();
 	}
 	
-	
+	/***
+	 * 添加类型
+	 */
 	function add(){
 		if (IS_POST){
 			$post=I('post.');
@@ -59,7 +50,9 @@ class TypeController extends BaseController{
 		
 	}
 	
-	
+	/***
+	 * 修改类型
+	 */
 	function edit(){
 		
 		if(IS_POST){
@@ -79,7 +72,9 @@ class TypeController extends BaseController{
 	}
 	
 	
-	
+	/***
+	 * 删除博客类型
+	 */
 	function delete(){
 		$post=I('id');
 		$res=M('type')->where("id=".$post)->delete();
@@ -90,6 +85,9 @@ class TypeController extends BaseController{
 		}
 	}
 	
+	/***
+	 * 筛选删除类型
+	 */
 	function delAll(){
 		$id=I("ids",0);
 		$map['id']=array('in',$id);

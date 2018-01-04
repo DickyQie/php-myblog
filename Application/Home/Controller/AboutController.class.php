@@ -3,6 +3,14 @@
 namespace Home\Controller;
 
 use Think\Controller;
+
+/***
+ * 
+ * @author zhangqie
+ * 
+ * 关于我们
+ *
+ */
 class AboutController extends Controller{
 	
     public function index(){

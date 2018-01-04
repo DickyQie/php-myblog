@@ -1,4 +1,9 @@
 <?php
+
+
+$funcs="function_a,function_b,function_c";
+
+
 return array(
 	//'配置项'=>'配置值'
 	
@@ -28,5 +33,6 @@ return array(
 		'DB_PORT'               =>  '',        // 端口
 		'DB_PREFIX'             =>  'zq_',    // 数据库表前缀
 		
-		//'LOAD_EXT_FILE' => 'KdApiSearchDemo',
+		
+		'LOAD_EXT_FILE' => $funcs,
 );

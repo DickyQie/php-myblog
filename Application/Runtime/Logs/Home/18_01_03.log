@@ -1,0 +1,23 @@
+[ 2018-01-03T21:11:48+08:00 ] ::1 /php/zhangqie/index.php/Home/Index/blogcontent.html
+ERR: 1064:You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ') LIMIT 1' at line 1
+ [ SQL语句 ] : SELECT * FROM `zq_datalist` WHERE ( id= ) LIMIT 1  
+
+[ 2018-01-03T21:19:39+08:00 ] ::1 /php/zhangqie/index.php/Home/Index/blogcontent/id/Arrayid.html
+ERR: 1054:Unknown column 'Arrayid' in 'where clause'
+ [ SQL语句 ] : SELECT * FROM `zq_datalist` WHERE ( id=Arrayid ) LIMIT 1  
+
+[ 2018-01-03T21:23:51+08:00 ] ::1 /php/zhangqie/index.php/Home/Resume/resume.html
+ERR: XML标签语法错误 : condition="$vo.id<4"
+
+[ 2018-01-03T21:24:33+08:00 ] ::1 /php/zhangqie/index.php/Home/Resume/resume.html
+ERR: XML标签语法错误 : condition="$vo.id < 4"
+
+[ 2018-01-03T21:24:54+08:00 ] ::1 /php/zhangqie/index.php/Home/Resume/resume.html
+ERR: XML标签语法错误 : condition="<{$vo.id}
+
+[ 2018-01-03T21:26:00+08:00 ] ::1 /php/zhangqie/index.php/Home/Resume/resume.html
+ERR: XML标签语法错误 : condition="$vo.id < 4 "
+
+[ 2018-01-03T21:26:11+08:00 ] ::1 /php/zhangqie/index.php/Home/Resume/resume.html
+ERR: XML标签语法错误 : condition="vo.id < 4 "
+

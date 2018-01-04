@@ -29,15 +29,12 @@ class PublicController extends Controller{
 				'codeSet' => '0123456789'//正则
 						
 		);
+		ob_clean();//避免上传服务器不显示验证码
 		$virfy=new \Think\Verify($config);
 		$virfy->entry('imgcode');
 		
 	}
 	
-	
-	/* $res['status']= 0;
-	$res['message'] ="用户名或密码错误";
-	$this->ajaxReturn($res); */
 	/****
 	 * 登录后台
 	 */
@@ -119,6 +116,9 @@ class PublicController extends Controller{
 					return ($ip);
 	}
 	
+	/***
+	 * 退出登录
+	 */
 	function logout(){
 		unset($_SESSION['adminzq_id']);
 		unset($_SESSION['adminzq_name']);
